@@ -6,7 +6,6 @@ const client = require('knex')({
   searchPath: 'knex,public'
 });
 
-const args = process.argv.slice(2);
 const input = process.argv[2];
 
 function padTwoDigitNumber(number) {
@@ -23,6 +22,7 @@ client.select().from('famous_people').where('first_name', `${input}`).orWhere('l
       return '- ' + row.id + ": " + row.first_name + ' ' + row.last_name + ", born '" + birthdate.getFullYear() + '-' + padTwoDigitNumber(birthdate.getMonth() + 1) + '-' + padTwoDigitNumber(birthdate.getDate()) + "'";
     });
     console.log(resultStrings.join('\n'));
+    client.destroy(); 
   }
 });
 

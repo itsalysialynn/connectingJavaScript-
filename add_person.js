@@ -6,7 +6,6 @@ const knex = require('knex')({
   searchPath: 'knex,public'
 });
 
-const args = process.argv.slice(2);
 const firstName = process.argv[2];
 const lastName = process.argv[3];
 const birthDate = process.argv[4];
